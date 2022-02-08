@@ -113,6 +113,8 @@ progress.progressBar::-webkit-progress-value {
     top: 30px;
     right: 3%;
     text-align: center;
+    outline: 0;
+    outline-color: none;
 }
 
 .far {
@@ -124,7 +126,7 @@ progress.progressBar::-webkit-progress-value {
     font-size: 18px;
 }
 
-.toggle-music .pararIniciar:hover {
+* .toggle-music .pararIniciar:hover {
     cursor: pointer;
 }
 
