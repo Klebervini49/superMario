@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="/assets/img/player/mario.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperMario</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/65642183a2.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Tela inicio -->
+    <div id="modelStart">
+        <div class="toggle-music">
+            <button class="pararIniciar">
+                <span class="stopPlay ouvindo">Pausar Música</span>
+            </button>
+        </div>
+        <audio autoplay loop>
+            <source src="assets/music/8-Bit-Fantasy.mp3" type="audio/mp3">
+        </audio>
+        <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span
+                style="color: cyan;">u</span><span style="color: yellow;">p</span><span
+                style="color: cyan;">e</span><span style="color: green;">r</span><br>
+            <span style="color: green;">M</span><span style="color: cyan;">a</span><span
+                style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
+            <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span
+                style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
+        </h1>
+        <button id="startButton">START</button>
+        <span style="font-size: 16px;">Or press Enter</span>
+    </div>
+
+    <!-- Tela de carregamento -->
+    <div class="loadingScreen">
+        <div class="toggle-music">
+            <button class="pararIniciar">
+                <span class="stopPlay ouvindo">Pausar Música</span>
+            </button>
+        </div>
+        <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span
+                style="color: cyan;">u</span><span style="color: yellow;">p</span><span
+                style="color: cyan;">e</span><span style="color: green;">r</span><br>
+            <span style="color: green;">M</span><span style="color: cyan;">a</span><span
+                style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
+            <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span
+                style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
+        </h1>
+        <div>
+            <progress class="progressBar" value="0" max="100">10%</progress>
+            <span class="totalProgress">0%</span>
+        </div>
+    </div>
+
+    <!-- Joguinho fofo -->
+    <div class="game">
+        <header class="infos">
+            <div class="lifes">MARIO x <span class="amount"></span></div>
+            <div class="coins"></div>
+            <div class="level"></div>
+            <div class="time"></div>
+        </header>
+        <main class="tela">
+            <div class="cam">
+                <div class="screen">
+                    <div class="players">
+                        <img src="assets/img/player/mario.png" class="playerMain">
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <canvas id="myCanvas" style="border:1px solid #000000;"></canvas>
+    </div>
+    <!-- Game Over -->
+    <div class="gameOver">
+
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
