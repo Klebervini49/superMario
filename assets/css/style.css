@@ -3,11 +3,6 @@
     src: url(../font/SuperMario256.ttf);
 }
 
-button:focus,
-div:focus {
-    outline: none;
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -20,11 +15,6 @@ div:focus {
 body {
     width: 100vw;
     height: 100vh;
-}
-
-button:focus,
-div:focus {
-    outline: none;
 }
 
 #modelStart {
@@ -115,6 +105,12 @@ progress.progressBar::-webkit-progress-value {
     text-align: center;
     outline: 0;
     outline-color: none;
+}
+
+.toggle-music:focus,
+button:focus,
+div:focus {
+    outline: none;
 }
 
 .far {
