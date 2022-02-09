@@ -1,6 +1,7 @@
 /**
  * Dev: Kleberson
  * - Recriando Super Mario -
+ * Por favor, não me processa nintendo!!!!!!!!!!!
  */
 
 document.querySelector('#modelStart audio').play()
@@ -69,7 +70,6 @@ function startStopMusic() {
         document.querySelector('#modelStart audio').play()
 
         mscIniciar.forEach((i1) => {
-            console.log(i1)
             i1.querySelector('span').classList.remove('parado')
             i1.querySelector('span').classList.add('ouvindo')
         })
