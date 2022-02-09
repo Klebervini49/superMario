@@ -1,8 +1,10 @@
 /**
  * Dev: Kleberson
  * - Recriando Super Mario -
- * Por favor, não me processa nintendo!!!!!!!!!!!
  */
+
+document.querySelector('#modelStart audio').play()
+
 /* Variaveis gerais*/
 let mscVolume = document.querySelector('#modelStart audio').volume = 0.03
 let mscIniciar = document.querySelectorAll('.pararIniciar')
@@ -11,6 +13,7 @@ let mscTexto = document.querySelectorAll('.stopPlay')
 let porcentagemCarregamentoInt = 0;
 
 /* Tela de Start */
+
 /**
  * Entrando com click
  */
@@ -35,7 +38,7 @@ function startGame(e) {
 };
 
 /**
- * Entrando com enter
+ * Entrando com Enter
  */
 function startGameEnter(e) {
     if (e.key === 'Enter') {
@@ -56,10 +59,8 @@ function startGameEnter(e) {
         }, 30)
     };
 };
+
 /* MUSIC */
-function onWindow() {
-    document.querySelector('#modelStart audio').play()
-}
 
 function startStopMusic() {
     if (document.querySelectorAll('.pararIniciar span')[0].classList.contains('parado') ||
