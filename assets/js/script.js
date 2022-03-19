@@ -5,7 +5,7 @@
  */
 
 /* Variaveis gerais*/
-let mscVolume = (document.querySelector('#modelStart audio').volume = 0.03);
+let mscVolume = (document.querySelector('#modelStart audio').volume = 0.15);
 let mscIniciar = document.querySelectorAll('.pararIniciar');
 let mscTexto = document.querySelectorAll('.stopPlay');
 
@@ -153,6 +153,7 @@ function defaultConfigs() {
     document.querySelector('.nome').value = infos.nome_player;
     document.querySelector('.vidas').value = infos.vidas_player;
     document.querySelector('.dificuldade').value = infos.dificuldade_player;
+    document.querySelector('.name_player').innerText = infos.nome;
 }
 defaultConfigs();
 
@@ -178,7 +179,8 @@ function trocarConfig() {
             localStorage.configs = JSON.stringify(configsInicio);
 
             infos = JSON.parse(localStorage.configs);
-            definirInfos();
+
+            alert('Salvamento completo');
         }
     });
 }
