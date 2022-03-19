@@ -1,7 +1,7 @@
 /**
  * Dev: Kleberson
  * - Recriando Super Mario -
- * Por favor, não me processa nintendo!!!!!!!!!!!
+ * Projeto sem fins lucrativos
  */
 
 /* Variaveis gerais*/
