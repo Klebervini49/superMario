@@ -5,29 +5,67 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="/assets/img/player/mario.png" type="image/png">
+    <script src="https://kit.fontawesome.com/65642183a2.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SuperMario</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
+    <!-- config -->
+    <div id="config">
+        <form class="configInicio">
+            <h1>Configuracoes</h1>
+            <div class="configCentralizado">
+                <label>
+                    Nome:<br>
+                    <input type="text" class="nome" required>
+                </label>
+                <label>
+                    Vidas:<br>
+                    <input type="number" min="1" max="3" class="vidas" value="1" required>
+                </label>
+                <label>
+                    Dificuldade:<br>
+                    <select name="select" class="dificuldade" required>
+                        <option value="Fácil">Facil</option>
+                        <option value="Médio" selected>Medio</option>
+                        <option value="Difícil">Dificil</option>
+                    </select>
+                </label>
+                <h1 class="home_nome"></h1>
+                <h3 class="home_vidas"></h3>
+                <h3 class="home_dificuldade"></h3>
+                <button>
+                    <span class="button_top"> Salvar
+                    </span>
+                </button>
+            </div>
+
+            <div class="fechar">Fechar</div>
+        </form>
+    </div>
     <!-- Tela inicio -->
     <div id="modelStart">
-        <div class="toggle-music">
-            <button class="pararIniciar">
-                <span class="stopPlay ouvindo">Pausar Música</span>
-            </button>
+        <div class="toggles">
+            <div class="toggle-music" style="margin-right: 50px;"">
+                <button class=" pararIniciar">
+                <span class="stopPlay parado">
+                    Iniciar Música
+                </span>
+                </button>
+            </div>
+
+            <div class="config toggle-music">
+                <i class="fa-solid fa-gear"></i>
+            </div>
         </div>
         <audio autoplay loop>
             <source src="assets/music/8-Bit-Fantasy.mp3" type="audio/mp3">
         </audio>
-        <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span
-                style="color: cyan;">u</span><span style="color: yellow;">p</span><span
-                style="color: cyan;">e</span><span style="color: green;">r</span><br>
-            <span style="color: green;">M</span><span style="color: cyan;">a</span><span
-                style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
-            <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span
-                style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
+        <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span style="color: cyan;">u</span><span style="color: yellow;">p</span><span style="color: cyan;">e</span><span style="color: green;">r</span><br>
+            <span style="color: green;">M</span><span style="color: cyan;">a</span><span style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
+            <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
         </h1>
         <button id="startButton">START</button>
         <span style="font-size: 16px;">Or press Enter</span>
@@ -35,18 +73,20 @@
 
     <!-- Tela de carregamento -->
     <div class="loadingScreen">
-        <div class="toggle-music">
-            <button class="pararIniciar">
-                <span class="stopPlay ouvindo">Pausar Música</span>
-            </button>
+        <div class="toggles">
+            <div class="toggle-music" style="margin-right: 50px;"">
+                <button class=" pararIniciar">
+                <span class="stopPlay parado">Iniciar Música</span>
+                </button>
+            </div>
+
+            <div class="config toggle-music">
+                <i class="fa-solid fa-gear"></i>
+            </div>
         </div>
-        <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span
-                style="color: cyan;">u</span><span style="color: yellow;">p</span><span
-                style="color: cyan;">e</span><span style="color: green;">r</span><br>
-            <span style="color: green;">M</span><span style="color: cyan;">a</span><span
-                style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
-            <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span
-                style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
+        <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span style="color: cyan;">u</span><span style="color: yellow;">p</span><span style="color: cyan;">e</span><span style="color: green;">r</span><br>
+            <span style="color: green;">M</span><span style="color: cyan;">a</span><span style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
+            <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
         </h1>
         <div>
             <progress class="progressBar" value="0" max="100">10%</progress>
@@ -57,7 +97,10 @@
     <!-- Joguinho fofo -->
     <div class="game">
         <header class="infos">
-            <div class="lifes">MARIO x <span class="amount"></span></div>
+            <div class="lifes">
+                <span class="name_player"></span> x <span class="vida_player">
+                    <span class="amount"></span>
+            </div>
             <div class="coins"></div>
             <div class="level"></div>
             <div class="time"></div>
