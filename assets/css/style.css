@@ -27,8 +27,6 @@ body {
     flex-direction: column;
     justify-content: center;
     background-color: hsl(240, 43%, 19%);
-
-
     padding: 10px;
     z-index: 999;
     width: 100vw;
