@@ -30,10 +30,10 @@ function trocarConfig() {
             dificuldade = document.querySelector('.dificuldade').value;
 
         vidas = parseInt(vidas);
-        if (vidas > 3 || nome === '') {
-            alert(
-                'Nome não digitado ou número máximo de vidas ultrapassado(3)',
-            );
+        if (vidas > 3) {
+            alert('Número máximo de vidas ultrapassado(3)');
+        } else if (nome === '') {
+            alert('Nick não digitado');
         } else {
             let configsInicio = {
                 nome_player: nome,
