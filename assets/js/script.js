@@ -44,7 +44,7 @@ function trocarConfig() {
             localStorage.configs = JSON.stringify(configsInicio);
 
             infos = JSON.parse(localStorage.configs);
-            console.log(infos);
+            vidasAtual = `${infos.vidas_player}`;
             alert('Salvamento completo');
         }
     });
