@@ -271,9 +271,15 @@ div:focus {
 /*game*/
 header.infos {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    font-family: Mario;
+    padding-top: 20px;
+    font-weight: 400;
+    font-size: 25px;
 }
-
+.infos div{
+    margin-left: 30px;
+}
 .tela {
     width: 100%;
 }
