@@ -55,6 +55,7 @@ trocarConfig(); // TROCANDO PARA AS INFORMAÇÕES ESCOLHIDAS PELO USUARIO
 let mscVolume = (document.querySelector('#modelStart audio').volume = 0.15);
 let porcentagemCarregamentoInt = 0;
 let coins = 0;
+let vidasAtual = `${infos.vidas_player}`;
 
 //config
 function config() {
@@ -101,7 +102,7 @@ function tempoDeJogo() {
         }
         inicioTimer = `${hora}:${minuto}:${segundo}`;
 
-        document.querySelector('.time').innerText = `Timer: ${inicioTimer}`;
+        document.querySelector('.time').innerText = `TIMER: ${inicioTimer}`;
     }, 1000);
 }
 
@@ -142,24 +143,25 @@ function startGame() {
                 let jogo = `<div class="game">
                 <header class="infos">
                     <div class="lifes">
-                            ${infos.nome_player} x ${infos.vidas_player}
-                            <span class="amount"></span>
+                            
                     </div>
-                    <div class="coins">Moedas: ${coins}</div>
-                    <div class="level">Level: 1</div>
+                    <div class="coins">MOEDAS: </div>
+                    <div class="level">FASE: 1</div>
                     <div class="time"></div>
                 </header>
                 <main class="tela">
-                    <div class="cam">
-                        <div class="screen">
-                            <div class="players">
-                                
-                            </div>
-                        </div>
-                    </div>
+                    
                 </main>
                 </div>`;
+
                 document.querySelector('body').innerHTML = jogo;
+
+                document.querySelector('.coins').innerText += ` ${coins}`;
+                document.querySelector(
+                    '.lifes',
+                ).innerHTML = `${infos.nome_player.toUpperCase()} x ${vidasAtual}<div class='dificuldade' style='margin-left:0'>Dificuldade: ${
+                    infos.dificuldade_player
+                }</div>`;
                 tempoDeJogo();
 
                 document.querySelector('#modelStart audio').pause();
