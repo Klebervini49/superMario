@@ -3,9 +3,67 @@
  * - Recriando Super Mario -
  * Projeto sem fins lucrativos
  */
+//inicio / config
+let inicio_config = `<!-- config -->
+<div id="config">
+    <form class="configInicio">
+        <h1>Configuracoes</h1>
+        <div class="configCentralizado">
+            <label>
+                Nick:<br>
+                <input type="text" maxlength="10" class="form__input nome" id="name" placeholder="Nick" required="" />
+            </label>
+            <label>
+                Vidas:<br>
+                <input type="number" min="1" max="3" class="form__input vidas" value="3" placeholder="Máximo 3" required>
+            </label>
+            <label>
+                Dificuldade:<br>
+                <select name="select" class="form__input dificuldade" required>
+                    <option value="Fácil">Fácil</option>
+                    <option value="Médio" selected>Médio</option>
+                    <option value="Difícil">Difícil</option>
+                </select>
+            </label>
+            <h1 class="home_nome"></h1>
+            <h3 class="home_vidas"></h3>
+            <h3 class="home_dificuldade"></h3>
+            <button>
+                <span class="button_top"> Salvar
+                </span>
+            </button>
+        </div>
+
+        <div class="fechar">Fechar</div>
+    </form>
+</div>
+<!-- Tela inicio -->
+<div id="modelStart">
+    <div class="toggles">
+        <div class="toggle-music" style="margin-right: 50px;"">
+        <button class=" pararIniciar">
+            <span class="stopPlay ouvindo">
+                Pausar Música
+            </span>
+            </button>
+        </div>
+
+        <div class="config toggle-music">
+            <i class="fa-solid fa-gear"></i>
+        </div>
+    </div>
+    <audio autoplay loop>
+        <source src="assets/music/8-Bit-Fantasy.mp3" type="audio/mp3">
+    </audio>
+    <h1 class="text-pop-up-top" style="text-align: center;"><span style="color: red;">S</span><span style="color: cyan;">u</span><span style="color: yellow;">p</span><span style="color: cyan;">e</span><span style="color: green;">r</span><br>
+        <span style="color: green;">M</span><span style="color: cyan;">a</span><span style="color: yellow;">r</span><span style="color: red;">i</span><span style="color: green;">o</span>
+        <span style="color: yellow;">W</span><span style="color: cyan;">o</span><span style="color: green;">r</span><span style="color: red;">l</span><span style="color: green;">d</span>
+    </h1>
+    <button id="startButton">START</button>
+    <span style="font-size: 16px;">Or press Enter</span>
+</div>`;
 
 // nome vidas e dificuldade
-
 function defaultConfigs() {
     if (!localStorage.configs) {
         let configsInicio = {
@@ -52,7 +110,10 @@ function trocarConfig() {
 trocarConfig(); // TROCANDO PARA AS INFORMAÇÕES ESCOLHIDAS PELO USUARIO
 
 /* Variaveis gerais*/
-let mscVolume = (document.querySelector('#modelStart audio').volume = 0.15);
+let mscVolume = () =>
+    (document.querySelector('#modelStart audio').volume = 0.03);
+mscVolume();
+
 let porcentagemCarregamentoInt = 0;
 let coins = 0;
 let vidasAtual = `${infos.vidas_player}`;
@@ -70,23 +131,23 @@ function fecharModal() {
     });
 }
 fecharModal();
-let inicioTimer;
+
 function tempoDeJogo() {
-    let hora = 00;
-    let minuto = 00;
-    let segundo = 00;
+    let hora = 0;
+    let minuto = 0;
+    let segundo = 0;
 
     setInterval(() => {
-        let horaString = hora.toString();
-        if (horaString.length === 1) {
+        if (hora.toString().length < 2) {
             hora = `0${hora}`;
         }
-        let minutoString = minuto.toString();
-        if (minutoString.length === 1) {
+
+        if (minuto.toString().length < 2) {
             minuto = `0${minuto}`;
         }
-        let segundoString = segundo.toString();
-        if (segundoString.length === 1) {
+        if (segundo.toString().length < 2) {
+            console.log(segundo);
+
             segundo = `0${segundo}`;
         }
 
@@ -100,7 +161,14 @@ function tempoDeJogo() {
             ++hora;
             minuto = 0;
         }
-        inicioTimer = `${hora}:${minuto}:${segundo}`;
+        if (hora === 1) {
+            alert('Você está nessa fase a uma hora, mds meu amigo');
+            document.querySelector('.game').remove();
+            document.body.innerHTML = inicio_config;
+
+            mscVolume();
+        }
+        let inicioTimer = `${hora}:${minuto}:${segundo}`;
 
         document.querySelector('.time').innerText = `TIMER: ${inicioTimer}`;
     }, 1000);
@@ -108,6 +176,7 @@ function tempoDeJogo() {
 
 /* TELA DE CARREGAMENTO */
 function startGame() {
+    // Colocando em tela cheia e iniciando carregamento
     document.documentElement.requestFullscreen();
     setTimeout(() => {
         let carregamentoTela = `
@@ -138,8 +207,6 @@ function startGame() {
             ).innerText = `${porcentagemCarregamentoInt}%`;
 
             if (porcentagemCarregamentoInt >= 100) {
-                document.querySelector('.loadingScreen').remove();
-
                 let jogo = `<div class="game">
                 <header class="infos">
                     <div class="lifes">
@@ -154,6 +221,8 @@ function startGame() {
                 </main>
                 </div>`;
 
+                // Iniciando o jogo
+                document.querySelector('.loadingScreen').remove();
                 document.querySelector('body').innerHTML = jogo;
 
                 document.querySelector('.coins').innerText += ` ${coins}`;
@@ -174,8 +243,8 @@ function startGameEnter(e) {
         startGame();
     }
 }
-document.querySelector('#startButton').addEventListener('click', startGame);
-window.addEventListener('keydown', startGameEnter);
+document.querySelector('#startButton').addEventListener('click', startGame); // entrando no jogo com click
+window.addEventListener('keydown', startGameEnter); // entrando no game com Enter
 
 /* MUSIC */
 function startStopMusic() {
@@ -186,8 +255,8 @@ function startStopMusic() {
     ) {
         document.querySelector('#modelStart audio').play();
 
-        document.querySelector('.pararIniciar').classList.remove('parado');
-        document.querySelector('.pararIniciar').classList.add('ouvindo');
+        document.querySelector('.pararIniciar span').classList.remove('parado');
+        document.querySelector('.pararIniciar span').classList.add('ouvindo');
         document.querySelector('.stopPlay').innerText = 'Pausar Música';
     } else if (
         document
@@ -196,8 +265,10 @@ function startStopMusic() {
     ) {
         document.querySelector('#modelStart audio').pause();
 
-        document.querySelector('.pararIniciar').classList.remove('ouvindo');
-        document.querySelector('.pararIniciar').classList.add('parado');
+        document
+            .querySelector('.pararIniciar span')
+            .classList.remove('ouvindo');
+        document.querySelector('.pararIniciar span').classList.add('parado');
 
         document.querySelector('.stopPlay').innerText = 'Iniciar Música';
     }
@@ -207,6 +278,7 @@ document
     .addEventListener('click', startStopMusic); // INICIANDO A FUNCÃO DE MÚSICA
 
 /* Game */
+
 let todasImagens = document.querySelectorAll('img');
 todasImagens.forEach((item) => {
     item.setAttribute('draggable', false);
